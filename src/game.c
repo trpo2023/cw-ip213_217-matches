@@ -44,6 +44,5 @@ void menu ()
 		if (a==2) { p=1;  }
 		else { printf("Выбирите другую цифру\n");}
 		}
-	return 0;
 }
 
