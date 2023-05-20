@@ -1,17 +1,15 @@
-TARGET = 100Matches
-CC = gcc
+all: main
 
-PREF_SRC = ./src/
-PREF_OBJ = ./obj/
+main: main.o game.o
+	gcc -Wall -o main main.o game.o
 
-SRC = $(wildcard $(PREF_SRC)*.c)
-OBJ = $(patsubst $(PREF_SRC)%.c, $(PREF_OBJ)%.o, $(SRC))
+main.o: main.c
+	gcc -Wall -c main.c
 
-$(TARGET) : $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
-	
-$(PREF_OBJ)%.o : $(PREF_SRC)%.c
-	$(CC) -c $< -o $@
-	
-clean :
-	rm $(TARGET) $(PREF_OBJ)*.o
+game.o: game.c
+	gcc -Wall -c game.c
+
+clean:
+	rm main *.o
+
+.PHONY: all clean
