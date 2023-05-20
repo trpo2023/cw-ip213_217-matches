@@ -40,7 +40,7 @@ void matches() {
 		count -= choice;
 		switchPlayerTurn(&turn);
 	}
-	announceWinner(turn);
+	announceWinner(3-turn);
 }
 
 void menu ()
