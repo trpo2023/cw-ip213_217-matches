@@ -1,29 +1,46 @@
 #include <stdio.h>
 #include "game.h"
 
-void matches() 
-{
-	int count = 100; 
-	int turn = 1; 
-	int choice; 
-	printf("==== ИГРА НАЧАЛАСЬ ====\n");
-	while (count > 0) { 
-    		printf("На столе осталось %d спичек\n", count);
-    		printf("Ход игрока %d\n", turn);
-    		printf("Выберите от 1 до 10 спичек: ");
-    		scanf("%d", &choice);
-    	if (choice < 1 || choice > 10) { 
-        	printf("Недопустимое количество спичек, повторите выбор\n");
-    	} 
+void displayMatches(int count) {
+	printf("На столе осталось %d спичек\n", count);
+}
+
+int getPlayerChoice(int turn, int count) {
+	int choice;
+	printf("Ход игрока %d\n", turn);
+	printf("Выберите от 1 до 10 спичек: ");
+	scanf("%d", &choice);
+	if (choice < 1 || choice > 10) {
+	printf("Недопустимое количество спичек, повторите выбор\n");
+		return getPlayerChoice(turn, count);
+	}
 	else if (count < choice) {
-        	printf("На столе нет столько спичек, повторите выбор\n"); 
-	} 
-      	else {
-        	count -= choice; 
-        	turn = 3 - turn; 
-    	} }
-	printf("\nИгрок %d победил!\n", turn);
-	printf("\n");
+		printf("На столе нет столько спичек, повторите выбор\n");
+		return getPlayerChoice(turn, count);
+	}
+	return choice;
+	}
+
+void switchPlayerTurn(int* turn) {
+	*turn = 3 - *turn;
+}
+
+void announceWinner(int turn) {
+	printf("\nИгрок %d победил!\n\n", turn);
+}
+
+void matches() {
+	int count = 100;
+	int turn = 1;
+	int choice;
+	printf("==== ИГРА НАЧАЛАСЬ ====\n");
+	while (count > 0) {
+		displayMatches(count);
+		choice = getPlayerChoice(turn, count);
+		count -= choice;
+		switchPlayerTurn(&turn);
+	}
+	announceWinner(turn);
 }
 
 void menu ()
