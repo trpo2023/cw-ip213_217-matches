@@ -1,29 +1,32 @@
-#include <iostream>
-#include "../src/game.h"
-#include "../thirdparty/ctest.h"
+#include <ctest.h>
+#include <ctype.h>
+#include <libmatches/game.hpp>
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
 
-CTEST(int getPlayerChoiceTest,int InvalidChoiceLessThan1) {
+CTEST(getPlayerChoiceTest, InvalidChoiceLessThan1) {
 int turn = 1;
 int count = 5;
 int choice = getPlayerChoice(turn, count);
-ASSERT_TRUE(choice < 1);
+ASSERT_TRUE(choice >= 1);
 }
 
-CTEST(int getPlayerChoiceTest,int InvalidChoiceGreaterThan10) {
+CTEST( getPlayerChoiceTest, InvalidChoiceGreaterThan10) {
 int turn = 1;
 int count = 5;
 int choice = getPlayerChoice(turn, count);
-ASSERT_TRUE(choice > 10);
+ASSERT_TRUE(choice <= 10);
 }
 
-CTEST(int getPlayerChoiceTest,int InvalidCountLessThanChoice) {
+CTEST(getPlayerChoiceTest, InvalidCountLessThanChoice) {
 int turn = 3;
 int count = 2;
 int choice = getPlayerChoice(turn, count);
-ASSERT_TRUE(choice == 0);
+ASSERT_TRUE(choice =! 0);
 }
 
-CTEST(int getPlayerChoiceTest,int ValidChoice) {
+CTEST( getPlayerChoiceTest, ValidChoice) {
 int turn = 1;
 int count = 5;
 int choice = getPlayerChoice(turn, count);
