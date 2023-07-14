@@ -5,7 +5,8 @@
 void menu();
 void matches();
 void displayMatches(int count);
-int getPlayerChoice(int turn, int count);
+int getPlayerChoice(int count);
+int getPlayerChoice1(int count);
 void switchPlayerTurn(int* turn);
 void announceWinner(int turn);
 
