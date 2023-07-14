@@ -7,18 +7,34 @@ void displayMatches(int count) {
 cout << "На столе осталось " << count << " спичек" << endl;
 }
 
-int getPlayerChoice(int turn, int count) {
+void Playernumber (int turn){
+    cout << "Ход игрока " << turn << endl;
+}
+
+int getPlayerChoice(int count) {
 int choice;
-cout << "Ход игрока " << turn << endl;
 cout << "Выберите от 1 до 10 спичек: ";
 cin >> choice;
 if (choice < 1 || choice > 10) {
 cout << "Недопустимое количество спичек, повторите выбор" << endl;
-return getPlayerChoice(turn, count);
+return getPlayerChoice (count);
 }
 else if (count < choice) {
 cout << "На столе нет столько спичек, повторите выбор" << endl;
-return getPlayerChoice(turn, count);
+return getPlayerChoice(count);
+}
+return choice;
+}
+
+int getPlayerChoice1(int count) {
+int choice=5;
+if (choice < 1 || choice > 10) {
+cout << "Недопустимое количество спичек, повторите выбор" << endl;
+return getPlayerChoice1 (count);
+}
+else if (count < choice) {
+cout << "На столе нет столько спичек, повторите выбор" << endl;
+return getPlayerChoice1(count);
 }
 return choice;
 }
@@ -38,7 +54,8 @@ int choice;
 cout << "==== ИГРА НАЧАЛАСЬ ====" << endl;
 while (count > 0) {
 displayMatches(count);
-choice = getPlayerChoice(turn, count);
+Playernumber(turn);
+choice = getPlayerChoice(count);
 count -= choice;
 switchPlayerTurn(&turn);
 }
