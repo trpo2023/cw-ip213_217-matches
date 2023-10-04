@@ -30,14 +30,11 @@ int getPlayerChoice(int count)
 
 int getPlayerChoice1(int count)
 {
-    //srand(time(NULL));
     int choice = 5;
     if (choice < 1 || choice > 10) {
         cout << "Недопустимое количество спичек, повторите выбор" << endl;
-        // return getPlayerChoice1 (count);
     } else if (count < choice) {
         cout << "На столе нет столько спичек, повторите выбор" << endl;
-        // return getPlayerChoice1(count);
     }
     return choice;
 }
