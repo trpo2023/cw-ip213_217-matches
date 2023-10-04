@@ -5,28 +5,28 @@
 #include <stdio.h>
 #include <string.h>
 
-CTEST(getPlayerChoiceTest, InvalidChoiceLessThan1)
+CTEST(getPlayerChoiceTest1, InvalidChoiceLessThan1)
 {
     int count = 20;
     int choice = getPlayerChoice1(count);
     ASSERT_TRUE(choice >= 1);
 }
 
-CTEST(getPlayerChoiceTest, InvalidChoiceGreaterThan10)
+CTEST(getPlayerChoiceTest1, InvalidChoiceGreaterThan10)
 {
     int count = 20;
     int choice = getPlayerChoice1(count);
     ASSERT_TRUE(choice <= 10);
 }
 
-CTEST(getPlayerChoiceTest, InvalidCountLessThanChoice)
+CTEST(getPlayerChoiceTest1, InvalidCountLessThanChoice)
 {
     int count = 20;
     int choice = getPlayerChoice1(count);
     ASSERT_TRUE(choice = !0);
 }
 
-CTEST(getPlayerChoiceTest, ValidChoice)
+CTEST(getPlayerChoiceTest1, ValidChoice)
 {
     int count = 20;
     int choice = getPlayerChoice1(count);
